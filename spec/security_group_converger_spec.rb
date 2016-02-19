@@ -65,9 +65,9 @@ describe SecurityGroupConverger do
                                                   ])
 
 
-        expect(security_group(stack_outputs['sgId'])).to_not be_opened
-                                                             protocol('tcp').
-                                                             for('128.0.0.0/20')
+        expect(security_group(stack_outputs['sgId'])).to be_opened(80).
+                                                         protocol('tcp').
+                                                         for('128.0.0.0/20')
       end
 
 
