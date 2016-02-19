@@ -11,7 +11,7 @@ CloudFormation {
     Code({
       'S3Bucket' => 'stelligent-binary-artifact-repo',
       'S3Key' => 'cloudfront-only-security-group-1.0.0-SNAPSHOT.jar',
-      'S3ObjectVersion' => '9IeMc4imZuKP5.dI3kRMnWeR31Stz4An'
+      'S3ObjectVersion' => '_oEoJMIB0aQn7pmiq5dUKmmxhQ0nu4Sz'
     })
   }
 
@@ -52,10 +52,7 @@ CloudFormation {
             "Statement":[
               {
                 "Action":[
-                  "ec2:AuthorizeSecurityGroupEgress",
-                  "ec2:AuthorizeSecurityGroupIngress",
-                  "ec2:RevokeSecurityGroupEgress",
-                  "ec2:RevokeSecurityGroupIngress"
+                  "ec2:*SecurityGroup*"
                 ],
                 "Effect":"Allow",
                 "Resource":"*"

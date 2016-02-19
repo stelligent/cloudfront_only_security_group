@@ -22,11 +22,11 @@
     <version>1.1.0</version>
   </dependency>
 
-  <!-- i think 9.1.0.0 will fix the module name problem -->
+  <!-- don't use 9.0.5.0, the Module.name is emitting rubbish that screws up reflection code for AWS SDK and awspec -->
   <dependency>
     <groupId>org.jruby</groupId>
     <artifactId>jruby</artifactId>
-    <version>1.7.19</version>
+    <version>9.0.4.0</version>
   </dependency>
 
   <dependency>

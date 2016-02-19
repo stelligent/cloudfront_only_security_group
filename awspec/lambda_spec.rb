@@ -1,6 +1,6 @@
 require_relative 'spec_helper'
 
-ENV['CLOUDFRONT_ONLY_SECURITY_GROUP_LAMBDA_FUNCTION_NAME'] = 'g-sgUpdaterLambdaFunction-1AIT730QWM7QZ'
+ENV['CLOUDFRONT_ONLY_SECURITY_GROUP_LAMBDA_FUNCTION_NAME'] = 'CloudFront-Lambda-Security-sgUpdaterLambdaFunction-CQS3T2H2QKZV'
 
 describe lambda(ENV['CLOUDFRONT_ONLY_SECURITY_GROUP_LAMBDA_FUNCTION_NAME']) do
   it { should exist }
