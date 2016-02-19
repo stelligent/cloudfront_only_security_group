@@ -108,6 +108,26 @@
         </execution>
       </executions>
     </plugin>
+
+    <!--<plugin>-->
+      <!--<groupId>com.bazaarvoice.maven.plugins</groupId>-->
+      <!--<artifactId>s3-upload-maven-plugin</artifactId>-->
+      <!--<version>1.2</version>-->
+      <!--<executions>-->
+        <!--<execution>-->
+          <!--<id>execution1</id>-->
+          <!--<phase>install</phase>-->
+          <!--<goals>-->
+            <!--<goal>s3-upload</goal>-->
+          <!--</goals>-->
+          <!--<configuration>-->
+            <!--<bucketName>stelligent-binary-artifact-repo</bucketName>-->
+            <!--<source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>-->
+            <!--<destination>${project.build.finalName}.${project.packaging}</destination>-->
+         <!--</configuration>-->
+        <!--</execution>-->
+      <!--</executions>-->
+    <!--</plugin>-->
   </plugins>
 </build>
 </project>
