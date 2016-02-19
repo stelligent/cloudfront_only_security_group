@@ -1,4 +1,5 @@
 require 'open-uri'
+require_relative 'aws_ip_range_parser'
 
 class CloudFrontIpRangeFetcher
   IP_RANGE_ENDPOINT = 'https://ip-ranges.amazonaws.com/ip-ranges.json'
