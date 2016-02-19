@@ -1,3 +1,5 @@
+require 'aws-sdk'
+
 class CloudfrontAutoUpdateDiscoverer
 
   def discover(tag_name:'cloudfront-autoupdate')

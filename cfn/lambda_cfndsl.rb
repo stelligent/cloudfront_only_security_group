@@ -11,7 +11,7 @@ CloudFormation {
     Code({
       'S3Bucket' => 'stelligent-binary-artifact-repo',
       'S3Key' => 'cloudfront-only-security-group-1.0.0-SNAPSHOT.jar',
-      'S3ObjectVersion' => 'YVXfy1Jly49xDcdkmDMfSxWOKeZ3aGQv'
+      'S3ObjectVersion' => '9IeMc4imZuKP5.dI3kRMnWeR31Stz4An'
     })
   }
 
@@ -69,6 +69,15 @@ CloudFormation {
                 ],
                 "Effect":"Allow",
                 "Resource":"*"
+              },
+              {
+                "Action": [
+                  "logs:CreateLogGroup",
+                  "logs:CreateLogStream",
+                  "logs:PutLogEvents"
+                ],
+                "Effect": "Allow",
+                "Resource": "arn:aws:logs:*:*:*"
               }
             ],
             "Version":"2012-10-17"
