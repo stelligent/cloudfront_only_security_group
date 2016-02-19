@@ -7,4 +7,5 @@ gem 'trollop'
 group :test do
   gem 'awspec'
   gem 'aws-int-test-rspec-helper'
+  gem 'simplecov'
 end
