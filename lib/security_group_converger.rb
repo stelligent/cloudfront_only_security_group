@@ -7,11 +7,16 @@ class SecurityGroupConverger
 
     wipe_ingress_rules(security_group)
 
-    ingress_rules.each do |ingress_rule|
-      security_group.authorize_ingress ip_protocol: ingress_rule[:protocol],
-                                       from_port: ingress_rule[:port],
-                                       to_port: ingress_rule[:port],
-                                       cidr_ip: ingress_rule[:cidr]
+    ip_permissions_to_authorize = ingress_rules.map do |ingress_rule|
+      {
+        ip_protocol: ingress_rule[:protocol],
+        from_port: ingress_rule[:port],
+        to_port: ingress_rule[:port],
+        ip_ranges: [{ cidr_ip: ingress_rule[:cidr] }]
+      }
+    end
+    unless ip_permissions_to_authorize.empty?
+      security_group.authorize_ingress ip_permissions: ip_permissions_to_authorize
     end
   end
 
@@ -23,23 +28,18 @@ class SecurityGroupConverger
   def wipe_ingress_rules(security_group)
     security_group.ip_permissions.each do |ip_permission|
       if ip_permission.ip_ranges.length > 0
-        ip_permission.ip_ranges.each do |ip_range|
-          security_group.revoke_ingress ip_protocol: ip_permission['ip_protocol'],
-                                        from_port: ip_permission['from_port'],
-                                        to_port: ip_permission['to_port'],
-                                        cidr_ip: ip_range['cidr_ip']
+        permissions_to_revoke = ip_permission.ip_ranges.map do |ip_range|
+          {
+            ip_protocol: ip_permission['ip_protocol'],
+            from_port: ip_permission['from_port'],
+            to_port: ip_permission['to_port'],
+            ip_ranges: [{ cidr_ip: ip_range['cidr_ip'] }]
+          }
         end
+        security_group.revoke_ingress ip_permissions: permissions_to_revoke
       else
-        fail 'something is wrong to be here'
-        # ip_permission.user_id_group_pairs.each do |user_id_group_pair|
-        #   security_group.revoke_ingress ip_protocol: ip_permission['ip_protocol'],
-        #                                 from_port: ip_permission['from_port'],
-        #                                 to_port: ip_permission['to_port'],
-        #                                 source_security_group_id: user_id_group_pair['group_id']
-        # end
+        fail 'something is wrong to be here - should be no source sg'
       end
     end
-
-
   end
 end
