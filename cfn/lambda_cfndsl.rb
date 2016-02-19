@@ -15,6 +15,14 @@ CloudFormation {
     })
   }
 
+  Lambda_Permission('snsTopicPermission') {
+    Action 'lambda:InvokeFunction'
+    FunctionName Ref('sgUpdaterLambdaFunction')
+    Principal 'sns.amazonaws.com'
+    SourceAccount '806199016981'
+    SourceArn 'arn:aws:sns:us-east-1:806199016981:AmazonIpSpaceChanged'
+  }
+
   IAM_Role('lambdaExecutionRole') {
     AssumeRolePolicyDocument(JSON.load <<-END
       {
@@ -70,4 +78,7 @@ CloudFormation {
       }
     ])
   }
+
+  Output(:arn,
+         FnGetAtt('sgUpdaterLambdaFunction', 'Arn'))
 }

@@ -15,6 +15,8 @@ class SecurityGroupConverger
     end
   end
 
+  private
+
   #
   # probably need to discover them, cache them, add the new ones then delete the old ones
   # so there is no interruption in service?
@@ -22,7 +24,6 @@ class SecurityGroupConverger
     security_group.ip_permissions.each do |ip_permission|
       if ip_permission.ip_ranges.length > 0
         ip_permission.ip_ranges.each do |ip_range|
-          puts ip_range
           security_group.revoke_ingress ip_protocol: ip_permission['ip_protocol'],
                                         from_port: ip_permission['from_port'],
                                         to_port: ip_permission['to_port'],
@@ -30,12 +31,12 @@ class SecurityGroupConverger
         end
       else
         fail 'something is wrong to be here'
-        ip_permission.user_id_group_pairs.each do |user_id_group_pair|
-          security_group.revoke_ingress ip_protocol: ip_permission['ip_protocol'],
-                                        from_port: ip_permission['from_port'],
-                                        to_port: ip_permission['to_port'],
-                                        source_security_group_id: user_id_group_pair['group_id']
-        end
+        # ip_permission.user_id_group_pairs.each do |user_id_group_pair|
+        #   security_group.revoke_ingress ip_protocol: ip_permission['ip_protocol'],
+        #                                 from_port: ip_permission['from_port'],
+        #                                 to_port: ip_permission['to_port'],
+        #                                 source_security_group_id: user_id_group_pair['group_id']
+        # end
       end
     end
 
