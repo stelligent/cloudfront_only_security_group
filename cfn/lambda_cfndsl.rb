@@ -11,7 +11,7 @@ CloudFormation {
     Code({
       'S3Bucket' => 'stelligent-binary-artifact-repo',
       'S3Key' => 'cloudfront-only-security-group-1.0.0-SNAPSHOT.jar',
-      'S3ObjectVersion' => 'jrgSy4blR3IkxEXlrwytyKhXTvbUm4UO'
+      'S3ObjectVersion' => '5FBTRF1DLbOfFFO0DbNyR3ptFzjCNWRc'
     })
   }
 
