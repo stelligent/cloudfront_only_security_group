@@ -4,9 +4,9 @@ require_relative 'security_group_converger'
 
 class CloudfrontOnlySecurityGroupUpdater
 
-  def update(tag_name:'cloudfront-autoupdate')
+  def update(tag_name:'cloudfront-autoupdate', port: 80)
     cloudfront_ip_ranges = fetcher.fetch
-    ingress_rules = cloudfront_ip_ranges.map { |ip_range| { cidr: ip_range, port: 443, protocol: 'tcp' } }
+    ingress_rules = cloudfront_ip_ranges.map { |ip_range| { cidr: ip_range, port: port, protocol: 'tcp' } }
 
     security_group_ids = CloudfrontAutoUpdateDiscoverer.new.discover(tag_name: tag_name)
 
