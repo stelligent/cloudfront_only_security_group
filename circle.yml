@@ -1,0 +1,10 @@
+machine:
+  ruby:
+    version: 'jruby-9.0.4.0'
+
+deployment:
+  s3:
+    branch: master
+    commands:
+      - pipeline/circleci_deployment.sh
+

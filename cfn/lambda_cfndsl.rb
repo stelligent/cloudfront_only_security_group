@@ -10,8 +10,7 @@ CloudFormation {
     Role FnGetAtt('lambdaExecutionRole', 'Arn')
     Code({
       'S3Bucket' => 'stelligent-binary-artifact-repo',
-      'S3Key' => 'cloudfront-only-security-group-1.0.0-SNAPSHOT.jar',
-      'S3ObjectVersion' => '5FBTRF1DLbOfFFO0DbNyR3ptFzjCNWRc'
+      'S3Key' => 'cloudfront-only-security-group-1.0.0-SNAPSHOT.jar'
     })
   }
 
@@ -87,4 +86,6 @@ CloudFormation {
 
   Output(:arn,
          FnGetAtt('sgUpdaterLambdaFunction', 'Arn'))
+  Output(:functionname,
+         Ref('sgUpdaterLambdaFunction'))
 }
