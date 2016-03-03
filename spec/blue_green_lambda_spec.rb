@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'blue_green_lambda'
+require 'lambda_alias_switcher'
 
 describe LambdaAliasSwitcher do
 
