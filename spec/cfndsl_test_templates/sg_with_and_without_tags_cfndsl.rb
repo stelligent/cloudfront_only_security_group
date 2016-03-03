@@ -31,5 +31,5 @@ CloudFormation {
          Ref('securityGroup2'))
 
   Output(:sgId3,
-         Ref('securityGroup2'))
+         Ref('securityGroup3'))
 }

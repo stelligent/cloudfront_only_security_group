@@ -4,9 +4,14 @@ class LambdaAliasSwitcher
 
   def switch_alias_of_latest(function_name:,
                              alias_arg:)
+    fail if function_name.nil?
+    fail if alias_arg.nil?
+
+    puts "function_name: #{function_name}"
 
     client = Aws::Lambda::Client.new
 
+    puts 'code: list_aliases_response = client.list_aliases function_name: function_nameå'
     list_aliases_response = client.list_aliases function_name: function_name
 
     found_alias = list_aliases_response.aliases.find do |alias_iter|

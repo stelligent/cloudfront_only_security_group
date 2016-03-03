@@ -21,10 +21,10 @@ describe CloudfrontOnlySecurityGroupUpdater do
       expect(found_security_groups.count).to be 1
       expect(found_security_groups.first).to eq stack_outputs['sgId1']
 
-      expect(security_group(stack_outputs['sgId1'])).to be_opened(443).
+      expect(security_group(stack_outputs['sgId1'])).to be_opened(80).
                                                            protocol('tcp').
                                                            for('128.0.0.0/23')
-      expect(security_group(stack_outputs['sgId1'])).to be_opened(443).
+      expect(security_group(stack_outputs['sgId1'])).to be_opened(80).
                                                             protocol('tcp').
                                                             for('155.55.0.0/16')
       expect(security_group(stack_outputs['sgId1']).inbound_rule_count).to eq 2
