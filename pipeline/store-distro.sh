@@ -26,7 +26,15 @@ mvn install
 head=$(git log -n 1 --oneline | awk '{print $1}')
 
 echo "Remember! You need to start your commit messages with #x, where x is the issue number your commit resolves."
-issues=$(git log v0.0.${current_version}..${head} --oneline | awk '{print $2}' | grep '^#' | uniq)
+
+if [[ ${current_version} == nil ]];
+then
+  log_rev_range=${head}
+else
+  log_rev_range="v0.0.${current_version}..${head}"
+fi
+
+issues=$(git log ${log_rev_range} --oneline | awk '{print $2}' | grep '^#' | uniq)
 
 git tag -a v${new_version} -m "Issues with commits, not necessarily closed: ${issues}"
 
