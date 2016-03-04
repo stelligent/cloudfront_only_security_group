@@ -7,7 +7,7 @@ source pipeline/deploy-new-lambda.sh
 #lambda_function_name set
 #version_arn set
 
-source run-end-to-end-test.sh
+source pipeline/run-end-to-end-test.sh
 
 #prod_arn
 source pipeline/blue-green-lambda.sh
