@@ -20,3 +20,4 @@ version_arn=$(aws lambda publish-version --function-name ${lambda_function_name}
                                          --region ${region} \
                 | jq '.FunctionArn' | tr -d '"')
 
+new_lambda_version=$(echo ${version_arn} | cut -f 8 -d ':')

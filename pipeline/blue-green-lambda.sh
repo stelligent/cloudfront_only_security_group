@@ -1,7 +1,8 @@
 #!/bin/bash -exl
 
 bin/switch_lambda_alias.rb --function-name ${lambda_function_name} \
-                           --alias PROD
+                           --alias PROD \
+                           --version ${new_lambda_version}
 
 # this is idempotent.  only needs to run first time after
 # lambda function passes the smoke test
