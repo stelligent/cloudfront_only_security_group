@@ -17,8 +17,9 @@ describe LambdaAliasSwitcher do
 
     it 'creates a new alias and assigns it to LATEST of lambda function' do
 
-      alias_arn = @blue_green_lambda.switch_alias_of_latest(function_name: stack_outputs['functionname'],
-                                                            alias_arg: 'PROD')
+      alias_arn = @blue_green_lambda.switch_alias(function_name: stack_outputs['functionname'],
+                                                  alias_arg: 'PROD',
+                                                  function_version: '$LATEST')
 
       expect(alias_arn).to eq "arn:aws:lambda:#{@aws_region}:#{@aws_account_number}:function:#{stack_outputs['functionname']}:PROD"
 
@@ -42,11 +43,13 @@ describe LambdaAliasSwitcher do
 
 
     it 'updates the alias' do
-      alias_arn = @blue_green_lambda.switch_alias_of_latest(function_name: stack_outputs['functionname'],
-                                                            alias_arg: 'PROD')
+      alias_arn = @blue_green_lambda.switch_alias(function_name: stack_outputs['functionname'],
+                                                  alias_arg: 'PROD',
+                                                  function_version: '$LATEST')
 
-      alias_arn = @blue_green_lambda.switch_alias_of_latest(function_name: stack_outputs['functionname'],
-                                                            alias_arg: 'PROD')
+      alias_arn = @blue_green_lambda.switch_alias(function_name: stack_outputs['functionname'],
+                                                  alias_arg: 'PROD',
+                                                  function_version: '$LATEST')
 
       list_aliases_response = Aws::Lambda::Client.new.list_aliases function_name: stack_outputs['functionname']
 
