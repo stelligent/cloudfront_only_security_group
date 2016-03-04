@@ -16,5 +16,7 @@ aws cloudformation validate-template --template-body file://output.json \
 lambda_function_name=$(bin/converge_lambda_stack.rb --stack-name ${stack_name} \
                                                     --path output.json)
 
-version_arn=$(aws lambda publish-version --function-name ${lambda_function_name} | jq '.FunctionArn' | tr -d '"')
+version_arn=$(aws lambda publish-version --function-name ${lambda_function_name} \
+                                         --region ${region} \
+                | jq '.FunctionArn' | tr -d '"')
 
