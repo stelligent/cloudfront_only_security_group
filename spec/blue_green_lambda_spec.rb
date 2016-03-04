@@ -44,16 +44,18 @@ describe LambdaAliasSwitcher do
 
 
     it 'updates the alias' do
-      puts "in the body: #{stack_outputs[:functionname]}"
-      alias_arn = @blue_green_lambda.switch_alias_of_latest(function_name: stack_outputs[:functionname],
-                                                            alias_arg: 'PROD')
+      puts "in the @stack_name: #{@stack_name}"
 
-      alias_arn = @blue_green_lambda.switch_alias_of_latest(function_name: stack_outputs[:functionname],
-                                                            alias_arg: 'PROD')
-
-      list_aliases_response = Aws::Lambda::Client.new.list_aliases function_name: stack_outputs[:functionname]
-
-      puts list_aliases_response
+      puts "in the body: #{stack_outputs}"
+      # alias_arn = @blue_green_lambda.switch_alias_of_latest(function_name: stack_outputs[:functionname],
+      #                                                       alias_arg: 'PROD')
+      #
+      # alias_arn = @blue_green_lambda.switch_alias_of_latest(function_name: stack_outputs[:functionname],
+      #                                                       alias_arg: 'PROD')
+      #
+      # list_aliases_response = Aws::Lambda::Client.new.list_aliases function_name: stack_outputs[:functionname]
+      #
+      # puts list_aliases_response
       #expect(list_aliases_response.aliases.size).to eq 1
     end
 
