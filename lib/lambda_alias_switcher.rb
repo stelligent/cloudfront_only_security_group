@@ -2,17 +2,9 @@ require 'aws-sdk'
 
 class LambdaAliasSwitcher
 
-  def switch_alias_of_latest(function_name:,
-                             alias_arg:)
-    puts 'should not be here'
-    switch_alias function_name: function_name,
-                 alias_arg: alias_arg,
-                 function_version: '$LATEST'
-  end
-
   def switch_alias(function_name:,
                    alias_arg:,
-                   function_version:)
+                   function_version: '$LATEST')
     fail 'function name is nil' if function_name.nil?
     fail 'alias arg is nil' if alias_arg.nil?
 
