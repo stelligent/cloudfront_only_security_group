@@ -13,6 +13,7 @@ describe 'lambda invocation of cloudfront_only_security_group' do
   end
 
   it 'updates the sg with the tag' do
+    Aws.config[:http_read_timeout] = 180
     client = Aws::Lambda::Client.new
 
     test_input = {

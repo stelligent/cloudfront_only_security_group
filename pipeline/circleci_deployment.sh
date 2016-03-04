@@ -7,6 +7,8 @@ source pipeline/deploy-new-lambda.sh
 #lambda_function_name set
 #version_arn set
 
+source pipeline/run-infrastructure-tests.sh
+
 source pipeline/run-end-to-end-test.sh
 
 #prod_arn
