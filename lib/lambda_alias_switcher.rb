@@ -30,6 +30,7 @@ class LambdaAliasSwitcher
 
       create_alias_response.alias_arn
     else
+      STDERR.puts "update alias: #{function_name} #{alias_arg} #{function_version} "
       update_alias_response = client.update_alias function_name: function_name,
                                                   name: alias_arg,
                                                   function_version: function_version
