@@ -57,8 +57,8 @@ describe LambdaAliasSwitcher do
       expect(list_aliases_response.aliases.size).to eq 1
     end
 
-    after(:all) do
-      cleanup(@stack_name)
-    end
+    # after(:all) do
+    #   cleanup(@stack_name)
+    # end
   end
 end
