@@ -6,12 +6,8 @@ class LambdaAliasSwitcher
                              alias_arg:)
     fail if function_name.nil?
     fail if alias_arg.nil?
-
-    puts "function_name: #{function_name}"
-
+    
     client = Aws::Lambda::Client.new
-
-    puts "client config: #{client.config.region}"
 
     list_aliases_response = client.list_aliases function_name: function_name
 

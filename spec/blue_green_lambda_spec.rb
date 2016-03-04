@@ -36,31 +36,26 @@ describe LambdaAliasSwitcher do
 
   context 'alias  PROD exists for lambda function' do
     before(:all) do
-      puts 'before'
       @stack_name = stack(stack_name: 'basiclambdafortesting',
                           path_to_stack: 'spec/cfndsl_test_templates/basic_lambda_cfndsl.rb')
-      puts 'after'
     end
 
 
     it 'updates the alias' do
-      puts "in the @stack_name: #{@stack_name}"
+      alias_arn = @blue_green_lambda.switch_alias_of_latest(function_name: stack_outputs['functionname'],
+                                                            alias_arg: 'PROD')
 
-      puts "in the body: #{stack_outputs}"
-      # alias_arn = @blue_green_lambda.switch_alias_of_latest(function_name: stack_outputs[:functionname],
-      #                                                       alias_arg: 'PROD')
-      #
-      # alias_arn = @blue_green_lambda.switch_alias_of_latest(function_name: stack_outputs[:functionname],
-      #                                                       alias_arg: 'PROD')
-      #
-      # list_aliases_response = Aws::Lambda::Client.new.list_aliases function_name: stack_outputs[:functionname]
-      #
-      # puts list_aliases_response
-      #expect(list_aliases_response.aliases.size).to eq 1
+      alias_arn = @blue_green_lambda.switch_alias_of_latest(function_name: stack_outputs['functionname'],
+                                                            alias_arg: 'PROD')
+
+      list_aliases_response = Aws::Lambda::Client.new.list_aliases function_name: stack_outputs['functionname']
+
+      puts list_aliases_response
+      expect(list_aliases_response.aliases.size).to eq 1
     end
 
-    # after(:all) do
-    #   cleanup(@stack_name)
-    # end
+    after(:all) do
+      cleanup(@stack_name)
+    end
   end
 end
