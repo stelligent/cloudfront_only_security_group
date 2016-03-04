@@ -11,8 +11,8 @@ class LambdaAliasSwitcher
 
     client = Aws::Lambda::Client.new
 
-    puts "client config: #{client.config}"
-    puts 'code: list_aliases_response = client.list_aliases function_name: function_nameå'
+    puts "client config: #{client.config.region}"
+
     list_aliases_response = client.list_aliases function_name: function_name
 
     found_alias = list_aliases_response.aliases.find do |alias_iter|

@@ -36,13 +36,15 @@ describe LambdaAliasSwitcher do
 
   context 'alias  PROD exists for lambda function' do
     before(:all) do
+      puts 'before'
       @stack_name = stack(stack_name: 'basiclambdafortesting',
                           path_to_stack: 'spec/cfndsl_test_templates/basic_lambda_cfndsl.rb')
+      puts 'after'
     end
 
 
     it 'updates the alias' do
-
+      puts "in the body: #{stack_outputs[:functionname]}"
       alias_arn = @blue_green_lambda.switch_alias_of_latest(function_name: stack_outputs[:functionname],
                                                             alias_arg: 'PROD')
 
