@@ -9,9 +9,6 @@ current_version=$(ruby -e 'tags=`git tag -l v0\.0\.*`' \
 
 if [[ ${current_version} == nil ]];
 then
-  #for issue scraping
-  current_version=origin
-
   new_version='0.0.1'
 else
   new_version=0.0.$((current_version+1))
