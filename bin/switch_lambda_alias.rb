@@ -9,8 +9,8 @@ opts = Trollop::options do
 
 end
 
-alias_arn = LambdaAliasSwitcher.new.switch_alias_of_latest function_name: opts[:function_name],
-                                                           alias_arg: opts[:alias],
-                                                           version: opts[:version]
+alias_arn = LambdaAliasSwitcher.new.switch_alias function_name: opts[:function_name],
+                                                 alias_arg: opts[:alias],
+                                                 version: opts[:version]
 puts alias_arn
 
