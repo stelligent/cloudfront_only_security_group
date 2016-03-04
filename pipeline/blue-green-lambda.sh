@@ -1,6 +1,6 @@
 #!/bin/bash -exl
 
-bin/switch_lambda_alias.rb --function-name ${version_arn} \
+bin/switch_lambda_alias.rb --function-name ${lambda_function_name} \
                            --alias PROD
 
 # this is idempotent.  only needs to run first time after

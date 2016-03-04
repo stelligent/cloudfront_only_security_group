@@ -4,8 +4,8 @@ class LambdaAliasSwitcher
 
   def switch_alias_of_latest(function_name:,
                              alias_arg:)
-    fail if function_name.nil?
-    fail if alias_arg.nil?
+    fail 'function name is nil' if function_name.nil?
+    fail 'alias arg is nil' if alias_arg.nil?
     
     client = Aws::Lambda::Client.new
 
