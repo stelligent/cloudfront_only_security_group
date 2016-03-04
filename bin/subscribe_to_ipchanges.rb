@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require 'trollop'
-require_relative 'lib/ip_space_changed_subscriber'
+require_relative '../lib/ip_space_changed_subscriber'
 
 opts = Trollop::options do
   opt :arn, '', type: :string, required: true

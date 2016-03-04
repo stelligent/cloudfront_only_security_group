@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 require 'trollop'
-require_relative 'lib/cloudformation_converger'
-require_relative 'lib/ip_space_changed_subscriber'
+require_relative '../lib/cloudformation_converger'
 
 opts = Trollop::options do
   opt :stack_name, '', type: :string, required: true
