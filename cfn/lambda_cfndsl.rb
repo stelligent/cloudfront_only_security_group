@@ -6,7 +6,7 @@ CloudFormation {
     Handler 'JRubyHandlerWrapper::handler'
     Runtime 'java8'
     Timeout 240
-    MemorySize 256
+    MemorySize 448
     Role FnGetAtt('lambdaExecutionRole', 'Arn')
     Code({
       'S3Bucket' => 'stelligent-binary-artifact-repo',
