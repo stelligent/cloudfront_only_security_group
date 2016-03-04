@@ -2,7 +2,7 @@
 
 region=${AWS_REGION}
 
-bundle install --frozen
+bundle install --frozen --system
 
 stack_name=CloudFront-Lambda-Security-Group
 
