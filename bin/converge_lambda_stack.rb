@@ -7,7 +7,7 @@ opts = Trollop::options do
   opt :path, '', type: :string, required: true
 end
 
-outputs = CloudformationConverger.new.converge stack_name: opts[:stack_name],
+outputs = CloudFormationConverger.new.converge stack_name: opts[:stack_name],
                                                stack_path: opts[:path]
 
 puts outputs['functionname']
