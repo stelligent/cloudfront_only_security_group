@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require 'trollop'
-require_relative '../lib/lambda_alias_switcher'
+require 'aws-sdk-utils'
 
 opts = Trollop::options do
   opt :function_name, '', type: :string, required: true

@@ -38,7 +38,7 @@ describe 'lambda invocation of cloudfront_only_security_group' do
     expect(security_group(stack_outputs['sgId1'])).to be_inbound_opened(3434)
   end
 
-  # after(:all) do
-  #   cleanup(@stack_name)
-  # end
+  after(:all) do
+    cleanup(@stack_name)
+  end
 end
