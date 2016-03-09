@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require 'trollop'
-require_relative 'aws-sdk-utils'
+require 'aws-sdk-utils'
 
 opts = Trollop::options do
   opt :stack_name, '', type: :string, required: true
